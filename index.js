@@ -5,8 +5,8 @@ let userWorkspaces
 
 
 const main = async () => {
-  let token = core.getClockifyApiToken() //look for api key or ask for it
-  // console.log(token)
+  let token = await core.getClockifyApiToken() //look for api key or ask for it
+  console.log(token)
   try{
     userWorkspaces = await core.getWorkSpacesAndProjects()
   }catch(error){
