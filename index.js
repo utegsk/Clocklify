@@ -13,19 +13,21 @@ const main = async () => {
     switch(args[0]){
       case 'start':
         try{
-          await core.getClockifyApiToken() //look for api key or ask for it
-          let {project,workspace} = await core.askForProjectOnWorkspace() // look for all users workspaces and projects
-          core.startWork(project,workspace)
-          console.log(project)
+          core.startWork()
+          console.log("[WORK] work was started")
         }catch(error){
-          console.log(error)
+          console.error(error.message)
+          process.exit()
         }
         break
-      case 'stop':
+      case 'end':
         try{
-          core.endWork();
+          await core.getClockifyApiToken() //look for api key or ask for it
+          let {project,workspace} = await core.askForProjectOnWorkspace() // look for all users workspaces and projects
+          core.endWork(workspace.id,project.id) // end work and send request to clockify api than delete work
         }catch(error){
-          console.error(error)
+          console.error(error.message)
+          process.exit()
         }
         break
     }
