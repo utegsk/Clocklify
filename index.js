@@ -2,39 +2,46 @@
 
 const core = require('./lib/core')
 
-let userProjects 
-let userWorkspaces
-
-
 const main = async () => {
   let args = process.argv.slice(2)
   
-  if(args.length === 1){
-    switch(args[0]){
-      case 'start':
-        try{
-          core.startWork()
-          console.log("[WORK] work was started")
-        }catch(error){
-          console.error(error.message)
-          process.exit()
-        }
-        break
-      case 'end':
-        try{
-          await core.getClockifyApiToken() //look for api key or ask for it
-          let {project,workspace} = await core.askForProjectOnWorkspace() // look for all users workspaces and projects
-          core.endWork(workspace.id,project.id) // end work and send request to clockify api than delete work
-        }catch(error){
-          console.error(error.message)
-          process.exit()
-        }
-        break
-    }
+  switch(args[0]){
+    case 'start':
+      try{
+        core.startWork()
+      }catch(error){
+        console.error(error.message)
+        process.exit()
+      }
+    break
+    case 'end':
+      try{
+        await core.getClockifyApiToken() //look for api key or ask for it
+        let {project,workspace} = await core.askForProjectOnWorkspace() // look for all users workspaces and projects
+        core.endWork(workspace.id,project.id) // end work and send request to clockify api than delete work
+      }catch(error){
+        console.error(error.message)
+        process.exit()
+      }
+    break
+    case 'remove':
+      try{
+        core.deleteWork()
+      }catch(error){
+        console.error(error.message)
+        process.exit()
+      }
+    break
+    case 'status':
+      core.workStatus()
+    break
+    case 'help':
+      core.help()
+    break
+    default:
+      core.wrongArgument(args[0])
+    break
   }
-  // console.log(workspace)
-  // console.log(project)
-
 }
 
 main()

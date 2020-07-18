@@ -1,6 +1,6 @@
 {
   "name": "uteg-cli",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "CLI for sending requests to clockify",
   "main": "index.js",
   "scripts": {
@@ -9,8 +9,6 @@
   "author": "Adam Harnusek",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^4.1.0",
-    "clear": "^0.1.0",
     "clui": "^0.3.6",
     "configstore": "^5.0.1",
     "inquirer": "^7.2.0"
