@@ -14,7 +14,8 @@ const main = async () => {
         process.exit()
       }
     break
-    case 'end':
+    case 'stop':
+    case 'end' :
       try{
         await core.getClockifyApiToken() //look for api key or ask for it
         let {project,workspace} = await core.askForProjectOnWorkspace() // look for all users workspaces and projects

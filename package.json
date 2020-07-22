@@ -1,6 +1,6 @@
 {
   "name": "uteg-cli",
-  "version": "1.0.2",
+  "version": "1.1.2",
   "description": "CLI for sending requests to clockify",
   "main": "index.js",
   "scripts": {
