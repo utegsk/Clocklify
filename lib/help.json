@@ -2,7 +2,7 @@
     "commandOptions":"command options :",
     "commands" : {
             "start" : "start work",
-            "end": "end actual work and send it to clockify",
+            "end|stop": "end actual work and send it to clockify",
             "help": "print help to terminal",
             "status": "print status of work to terminal",
             "remove": "remove actual work"
