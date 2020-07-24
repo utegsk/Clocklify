@@ -5,7 +5,8 @@
             "end|stop": "end actual work and send it to clockify",
             "help": "print help to terminal",
             "status": "print status of work to terminal",
-            "remove": "remove actual work"
+            "remove": "remove actual work",
+            "log": "log work from past"
     },
     "packageName": "UTEG-CLI",
     "usage": "usage :",

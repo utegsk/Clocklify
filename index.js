@@ -40,6 +40,9 @@ const main = async () => {
     case 'help':
       core.help()
     break
+    case 'log':
+      core.logWork(args[1], args[2])
+    break
     default:
       core.wrongArgument(args[0])
     break
