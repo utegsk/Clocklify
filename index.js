@@ -19,7 +19,7 @@ const main = async () => {
       try{
         await core.getClockifyApiToken() //look for api key or ask for it
         core.checkWork() // check if there is work and pring lenght string
-        let {project,workspace} = await core.askForProjectOnWorkspace() // look for all users workspaces and projects
+        let {project,workspace} = await core.askForProjectAndWorkspace() // look for all users workspaces and projects
         core.endWork(workspace.id,project.id) // end work and send request to clockify api than delete work
       }catch(error){
         console.error(error.message)
