@@ -9,7 +9,6 @@
   "author": "Adam Harnusek",
   "license": "ISC",
   "dependencies": {
-    "clui": "^0.3.6",
     "configstore": "^5.0.1",
     "inquirer": "^7.2.0",
     "minimist": "^1.2.5"
