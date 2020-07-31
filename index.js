@@ -43,17 +43,19 @@ const main = async () => {
       core.help()
     break
     case 'log':
-      if(args.length === 2){
-        console.log(`Loging work from: '${args[1]}'`)
-        try{
+      try{
+        if(args.length === 2){
           core.checkFileAndSendRequest(args[1])
-        }catch(error){
-          console.error(error.message)
-          process.exit()
+        }else if(args.length === 3){
+          core.logWork(args[1], args[2])
         }
-      }else if(args.length === 3){
-        core.logWork(args[1], args[2])
+      }catch(error){
+        console.error(error.message)
+        process.exit()
       }
+    break
+    case 'version':
+      core.printVersion()
     break
     default:
       core.wrongArgument(args[0])
