@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
+
+var argv = require('minimist')(process.argv.slice(2));
+var args = argv._
 const core = require('./lib/core')
 
 const main = async () => {
-  let args = process.argv.slice(2)
-  
+
   switch(args[0]){
     case 'start':
       try{
@@ -17,10 +19,10 @@ const main = async () => {
     case 'stop':
     case 'end' :
       try{
-        await core.getClockifyApiToken() //look for api key or ask for it
-        core.checkWork() // check if there is work and pring lenght string
-        let {project,workspace} = await core.askForProjectAndWorkspace() // look for all users workspaces and projects
-        core.endWork(workspace.id,project.id) // end work and send request to clockify api than delete work
+        await core.getClockifyApiToken()
+        core.checkWork()
+        let {project,workspace} = await core.askForProjectAndWorkspace()
+        core.endWork(workspace.id,project.id)
       }catch(error){
         console.error(error.message)
         process.exit()
@@ -41,7 +43,17 @@ const main = async () => {
       core.help()
     break
     case 'log':
-      core.logWork(args[1], args[2])
+      if(args.length === 2){
+        console.log(`Loging work from: '${args[1]}'`)
+        try{
+          core.checkFileAndSendRequest(args[1])
+        }catch(error){
+          console.error(error.message)
+          process.exit()
+        }
+      }else if(args.length === 3){
+        core.logWork(args[1], args[2])
+      }
     break
     default:
       core.wrongArgument(args[0])

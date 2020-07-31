@@ -1,0 +1,14 @@
+[
+  {
+    "date": "2020-07-29",
+    "from": "09:00",
+    "to": "17:00",
+    "note": "Working on something important"
+  },
+  {
+    "date": "2020-07-30",
+    "from": "10:00",
+    "to": "14:00",
+    "note": "Quick fixes of cool features"
+  }
+]
