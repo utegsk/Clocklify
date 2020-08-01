@@ -1,7 +1,8 @@
 {
     "commandOptions":"command options :",
     "commands" : {
-            "start" : "start work",
+            "start": "start work",
+            "start -t [HH:MM]": "set start time of work to a certain value",
             "end|stop": "end actual work and send it to clockify",
             "help": "print help to terminal",
             "status": "print status of work to terminal",

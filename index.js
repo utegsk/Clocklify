@@ -10,7 +10,11 @@ const main = async () => {
   switch(args[0]){
     case 'start':
       try{
-        core.startWork()
+        if (argv.t) {
+          core.startWork(argv.t)
+        } else {
+          core.startWork(-1);
+        }
       }catch(error){
         console.error(error.message)
         process.exit()
