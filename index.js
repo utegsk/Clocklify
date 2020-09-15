@@ -32,6 +32,19 @@ const main = async () => {
         process.exit()
       }
     break
+    case 'lunch':
+      try{
+
+        if(args[1] === 'start'){
+          core.startLunchBreak()
+        }else if(args[1] === 'stop' || args[1] === 'end'){
+          core.endLunchBreak()
+        }
+      }catch(error){
+        console.error(error.message)
+        process.exit()
+      }
+    break
     case 'remove':
       try{
         core.deleteWork()
