@@ -1,13 +1,15 @@
 {
     "commandOptions":"command options :",
     "commands" : {
-            "start": "start work",
-            "start -t [HH:MM]": "set start time of work to a certain value",
-            "end|stop": "end actual work and send it to clockify",
-            "help": "print help to terminal",
-            "status": "print status of work to terminal",
-            "remove": "remove actual work",
-            "log": "log work from past"
+        "start": "start work",
+        "start -t [HH:MM]": "set start time of work to a certain value",
+        "end|stop": "end actual work and send it to clockify",
+        "help": "print help to terminal",
+        "status": "print status of work to terminal",
+        "remove": "remove actual work",
+        "log": "log work from past",
+        "lunch start": "start lunch break",
+        "lunch stop|end": "stop lunch break"
     },
     "packageName": "UTEG-CLI",
     "usage": "usage :",
