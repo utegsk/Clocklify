@@ -1,82 +1,66 @@
 #!/usr/bin/env node
-
+import { 
+  startWork,
+  stopWork,
+  toggleBreak,
+  deleteWork,
+  workStatus,
+  help,
+  importEntries,
+  logWork,
+  printVersion,
+  unknownArgument
+} from './lib/core';
 
 var argv = require('minimist')(process.argv.slice(2));
 var args = argv._
-const core = require('./lib/core')
+
 
 const main = async () => {
-
-  switch(args[0]){
-    case 'start':
-      try{
-        if (argv.t) {
-          core.startWork(argv.t)
-        } else {
-          core.startWork(-1);
-        }
-      }catch(error){
-        console.error(error.message)
-        process.exit()
-      }
-    break
-    case 'stop':
-    case 'end' :
-      try{
-        await core.getClockifyApiToken()
-        core.checkWork()
-        let {project,workspace} = await core.askForProjectAndWorkspace()
-        core.endWork(workspace.id,project.id)
-      }catch(error){
-        console.error(error.message)
-        process.exit()
-      }
-    break
-    case 'lunch':
-      try{
-
-        if(args[1] === 'start'){
-          core.startLunchBreak()
-        }else if(args[1] === 'stop' || args[1] === 'end'){
-          core.endLunchBreak()
-        }
-      }catch(error){
-        console.error(error.message)
-        process.exit()
-      }
-    break
-    case 'remove':
-      try{
-        core.deleteWork()
-      }catch(error){
-        console.error(error.message)
-        process.exit()
-      }
-    break
-    case 'status':
-      core.workStatus()
-    break
-    case 'help':
-      core.help()
-    break
-    case 'log':
-      try{
-        if(args.length === 2){
-          core.checkFileAndSendRequest(args[1])
-        }else if(args.length === 3){
-          core.logWork(args[1], args[2])
-        }
-      }catch(error){
-        console.error(error.message)
-        process.exit()
-      }
-    break
-    case 'version':
-      core.printVersion()
-    break
-    default:
-      core.wrongArgument(args[0])
-    break
+  try {
+    switch(args[0]) {
+      case 'start':
+      case 'in'   :
+        startWork(argv)
+        break
+      case 'stop':
+      case 'out' :
+      case 'quit':
+      case 'exit':
+      case 'end' :
+        stopWork()    
+        break
+      case 'break':
+      case 'pause':
+      case 'lunch':
+        toggleBreak()
+        break
+      case 'remove':
+      case 'throw':
+      case 'dump':
+        deleteWork()
+        break
+      case 'status':
+        workStatus()
+        break
+      case 'help':
+        help()
+        break
+      case 'log':
+        logWork(args[1], args[2])
+        break
+      case 'import':
+        importEntries(args[1])
+        break
+      case 'version':
+        printVersion()
+        break
+      default:
+        unknownArgument(args[0])
+    }
+  } catch(error) {
+    console.error(error.message)
+    process.exit()
   }
 }
 
