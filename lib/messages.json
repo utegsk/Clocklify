@@ -1,0 +1,29 @@
+{
+  "WORK_IN_PROGRESS":"Work in progress",
+  "NO_WORK_IN_PROGRESS":"No work in progress",
+  "WORK_HAS_STARTED":"Work has started",
+  "REMOVED_WORK":"Work was removed",
+
+  "START_BREAK":"Break has started",
+  "STOP_BREAK":"Break has stopped",
+  "STOP_BREAK_FAILED":"Failed to stop break",
+  "BREAK_IN_PROGRESS":"Break in progress",
+  "NO_BREAK_IN_PROGRESS":"No break in progress",
+
+  "WRONG_START_TIME_ENTRY": "Time entry is not valid, use one of the following formats: 'HH:MM','H:M'",
+  "WRONG_START_TIME_ENTRY_OVER":"We are not there yet :). Enter the time you arrived to work.",
+  "START_DATE_MISSING":"Missing start date",
+  "DATE_RANGE_REQUIRED":"Two dates required in format: YYYY-MM-DD-HH-MM",
+
+  "ENTER_API_KEY":"Please, enter your clockify api key.",
+  "ENTER_WORK_DESCRIPTION":"What did you work on?",
+  "SELECT_WORKSPACE":"Select workspace: ",
+  "SELECT_PROJECT":"Select project:",
+
+  "WRONG_FILE_PATH":"Specified file path couldn't be found",
+  "WRONG_FILE_FORMAT":"Wrong file format, only .json allowed",
+
+  "DEFAULT_DESCRIPTION":"Nothing else but honest work",
+  "MISSING_API_KEY":"Couldn't find your api key",
+  "COMING_SOON":"This feature is coming soon.."
+}
