@@ -1,82 +1,57 @@
 #!/usr/bin/env node
+require('dotenv').config()
+const core = require('./lib/core.js');
+const argv = require('minimist')(process.argv.slice(2));
+const args = argv._;
 
-
-var argv = require('minimist')(process.argv.slice(2));
-var args = argv._
-const core = require('./lib/core')
 
 const main = async () => {
-
-  switch(args[0]){
-    case 'start':
-      try{
-        if (argv.t) {
-          core.startWork(argv.t)
-        } else {
-          core.startWork(-1);
-        }
-      }catch(error){
-        console.error(error.message)
-        process.exit()
-      }
-    break
-    case 'stop':
-    case 'end' :
-      try{
-        await core.getClockifyApiToken()
-        core.checkWork()
-        let {project,workspace} = await core.askForProjectAndWorkspace()
-        core.endWork(workspace.id,project.id)
-      }catch(error){
-        console.error(error.message)
-        process.exit()
-      }
-    break
-    case 'lunch':
-      try{
-
-        if(args[1] === 'start'){
-          core.startLunchBreak()
-        }else if(args[1] === 'stop' || args[1] === 'end'){
-          core.endLunchBreak()
-        }
-      }catch(error){
-        console.error(error.message)
-        process.exit()
-      }
-    break
-    case 'remove':
-      try{
+  try {
+    switch(args[0]) {
+      case 'start':
+      case 'in'   :
+        core.startWork(argv)
+        break
+      case 'stop':
+      case 'out' :
+      case 'quit':
+      case 'exit':
+      case 'end' :
+      case 'done':
+        core.stopWork()
+        break
+      case 'break':
+      case 'pause':
+      case 'lunch':
+        core.toggleBreak()
+        break
+      case 'remove':
+      case 'throw' :
+      case 'clear' :
+      case 'dump'  :
         core.deleteWork()
-      }catch(error){
-        console.error(error.message)
-        process.exit()
-      }
-    break
-    case 'status':
-      core.workStatus()
-    break
-    case 'help':
-      core.help()
-    break
-    case 'log':
-      try{
-        if(args.length === 2){
-          core.checkFileAndSendRequest(args[1])
-        }else if(args.length === 3){
-          core.logWork(args[1], args[2])
-        }
-      }catch(error){
-        console.error(error.message)
-        process.exit()
-      }
-    break
-    case 'version':
-      core.printVersion()
-    break
-    default:
-      core.wrongArgument(args[0])
-    break
+        break
+      case 'status':
+        core.workStatus()
+        break
+      case 'help':
+        core.help()
+        break
+      case 'log':
+        core.logWork(args[1], args[2])
+        break
+      case 'import':
+        core.importEntries(args[1])
+        break
+      case 'version':
+        core.printVersion()
+        break
+      default:
+        core.unknownArgument(args[0])
+    }
+  } catch(error) {
+    console.error(error.message)
+    process.exit()
   }
 }
 
