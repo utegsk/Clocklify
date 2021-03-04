@@ -34,6 +34,9 @@ const main = async () => {
       case 'status':
         core.workStatus()
         break
+      case 'goal':
+        await core.monthGoal(args[1])
+        break
       case 'help':
         core.help()
         break

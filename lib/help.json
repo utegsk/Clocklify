@@ -6,11 +6,12 @@
     "start|in [-t [HH:MM]]": "starts work, -t = enter custom in time",
     "end|stop|out|quit|exit|done": "ends actual work",
     "break|pause|lunch": "toggles break",
+    "goal [on|off]": "turns on/off monthly working hours goal tracker",
     "remove|delete": "removes actual work",
     "log [start] [end]": "prints log work from entered range",
     "stats [-lm]":"prints statistics for current month, -lm = last month"
   },
-  "packageName": "clockclify",
+  "packageName": "clocklify",
   "usage": "usage :",
   "usageExample": "clock <command>"
 }
