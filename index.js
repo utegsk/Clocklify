@@ -7,16 +7,16 @@ const args = argv._;
 
 const main = async () => {
   try {
-    switch(args[0]) {
+    switch (args[0]) {
       case 'start':
-      case 'in'   :
+      case 'in':
         core.startWork(argv)
         break
       case 'stop':
-      case 'out' :
+      case 'out':
       case 'quit':
       case 'exit':
-      case 'end' :
+      case 'end':
       case 'done':
         core.stopWork()
         break
@@ -26,9 +26,9 @@ const main = async () => {
         core.toggleBreak()
         break
       case 'remove':
-      case 'throw' :
-      case 'clear' :
-      case 'dump'  :
+      case 'throw':
+      case 'clear':
+      case 'dump':
         core.deleteWork()
         break
       case 'status':
@@ -52,7 +52,7 @@ const main = async () => {
       default:
         core.unknownArgument(args[0])
     }
-  } catch(error) {
+  } catch (error) {
     console.error(error.message)
     process.exit()
   }
