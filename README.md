@@ -11,8 +11,8 @@ A simple time tracker interacting with clockify from terminal.
 - [x] dump ongoing working time
 
 - [x] goal
-- [ ] log of working entries
-- [ ] monthly report
+- [x] log of working entries
+- [x] monthly report
 - [ ] change slack status
 
 ## How to install
