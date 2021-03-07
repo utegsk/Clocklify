@@ -41,7 +41,7 @@ const main = async () => {
         core.help()
         break
       case 'log':
-        core.logWork(args[1], args[2])
+        core.logWork(argv)
         break
       case 'import':
         core.importEntries(args[1])
