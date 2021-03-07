@@ -9,7 +9,6 @@
     "goal [on|off]": "turns on/off monthly working hours goal tracker",
     "remove|delete": "removes actual work",
     "log [start [YYYY-MM-DD]] [end [YYYY-MM-DD]]": "prints log work from entered range",
-    "stats [-lm]": "prints statistics for current month, -lm = last month"
   },
   "packageName": "clocklify",
   "usage": "usage :",

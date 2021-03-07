@@ -47,7 +47,6 @@ Available Commands:
   log [from] [to] List all the entries within specified dates range
   status          Current status of working time
   help            Help for Clocklify
-  report          Table of statistics for the current month
 
 Flags:
   -v, --version             Version of the command
