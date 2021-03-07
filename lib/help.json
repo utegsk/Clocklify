@@ -8,7 +8,7 @@
     "break|pause|lunch": "toggles break",
     "goal [on|off]": "turns on/off monthly working hours goal tracker",
     "remove|delete": "removes actual work",
-    "log [start [YYYY-MM-DD]] [end [YYYY-MM-DD]]": "prints log work from entered range",
+    "log [start [YYYY-MM-DD]] [end [YYYY-MM-DD]]": "prints log work from entered range"
   },
   "packageName": "clocklify",
   "usage": "usage :",
