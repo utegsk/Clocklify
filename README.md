@@ -1,41 +1,40 @@
-Clocklify
-=========
+# Clocklify
+
 A simple time tracker interacting with clockify from terminal.
 
-Features
---------
+## Features
+
 - [x] start new working entry
 - [x] end working entry
 - [x] toggle break
 - [x] print current working status
 - [x] dump ongoing working time
 
-
-- [ ] goal
+- [x] goal
 - [ ] log of working entries
 - [ ] monthly report
 - [ ] change slack status
 
+## How to install
 
-How to install
---------------
 Using [`npm`](https://www.npmjs.com):
+
 ```
 npm install clocklify
 ```
 
 Using [`yarn`](https://yarnpkg.com):
+
 ```
 yarn install clocklify
 ```
 
-Getting started
----------------
+## Getting started
+
 Right after installation you are ready to go.
 
+## Help
 
-Help
-----
 ```
 Usage:
   clock [command]
