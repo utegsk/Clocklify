@@ -9,6 +9,7 @@ const main = async () => {
   try {
     switch (args[0]) {
       case 'start':
+      case 'go':
       case 'in':
         core.startWork(argv)
         break
@@ -18,18 +19,12 @@ const main = async () => {
       case 'exit':
       case 'end':
       case 'done':
-        core.stopWork()
+        core.stopWork(argv)
         break
       case 'break':
       case 'pause':
       case 'lunch':
         core.toggleBreak()
-        break
-      case 'remove':
-      case 'throw':
-      case 'clear':
-      case 'dump':
-        core.deleteWork()
         break
       case 'status':
         core.workStatus()
@@ -50,7 +45,13 @@ const main = async () => {
         core.printVersion()
         break
       default:
-        core.unknownArgument(args[0])
+        if (argv.v || argv.version) {
+          core.printVersion()
+        } else if (argv.h || argv.help) {
+          core.help()
+        } else {
+          core.unknownArgument(args[0])
+        }
     }
   } catch (error) {
     console.error(error.message)

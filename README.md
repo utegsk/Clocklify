@@ -36,22 +36,26 @@ Right after installation you are ready to go.
 ## Help
 
 ```
-Usage:
-  clock [command]
+clocklify
+    Usage :
+         clock  <command>
 
-Available Commands:
-  work [start|in] Strats wokring time
-  work [stop|out] Ends wokring time
-  delete          Deletes currently running working entry
-  break           Toggles break status
-  log [from] [to] List all the entries within specified dates range
-  status          Current status of working time
-  help            Help for Clocklify
+    Commands :
+         status                         prints working status
+         start|in|go                    starts work
+         stop|out|quit|exit|end|done    stops ongoing work
+         break|pause|lunch              toggles break
+         log [YYYY-MM-DD] [YYYY-MM-DD]  prints log work between entered range
+         import [example.json]          imports entries from file
+         goal [option]
+             on      enables goal tracker
+             off     disables goal tracker
+             set     sets new goal for a certain workspace
+             status  prints goal tracker status
 
-Flags:
-  -v, --version             Version of the command
-  [command] -h, --help      Help about any command
-  [command] -lm, --last     Applies command to the previous month
-
-Use "clock [command] --help" for more information about a command.
+    Flags :
+         -t [HH:MM]    applicable with <start|in|go>, sets starting time to a certain value
+         -d            applicable with <stop|out|quit|exit|end|done>, dumps ongoing working time
+         -v, -version  prints current version
+         -h, -help     prints help
 ```
