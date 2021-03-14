@@ -1,16 +1,29 @@
 {
-  "commandOptions": "command options :",
+  "commandOptionsLabel": "Commands",
   "commands": {
-    "help": "prints help",
     "status": "prints working status",
-    "start|in [-t [HH:MM]]": "starts work, -t = enter custom in time",
-    "end|stop|out|quit|exit|done": "ends actual work",
+    "start|in|go": "starts work",
+    "stop|out|quit|exit|end|done": "stops ongoing work",
     "break|pause|lunch": "toggles break",
-    "goal [on|off]": "turns on/off monthly working hours goal tracker",
-    "remove|delete": "removes actual work",
-    "log [start [YYYY-MM-DD]] [end [YYYY-MM-DD]]": "prints log work from entered range"
+    "log [YYYY-MM-DD] [YYYY-MM-DD]": "prints log work between entered range",
+    "import [example.json]": "imports entries from file",
+    "goal [option]": {
+      "on": "enables goal tracker",
+      "off": "disables goal tracker",
+      "set": "sets new goal for a certain workspace",
+      "status": "prints goal tracker status"
+    }
+  },
+  "flagOptionsLabel": "Flags",
+  "flags": {
+    "-t [HH:MM]": "applicable with <start|in|go>, sets starting time to a certain value",
+    "-d": "applicable with <stop|out|quit|exit|end|done>, dumps ongoing working time",
+    "-v, -version": "prints current version",
+    "-h, -help": "prints help"
   },
   "packageName": "clocklify",
-  "usage": "usage :",
-  "usageExample": "clock <command>"
+  "usage": "Usage",
+  "usageExample": {
+    "clock": "<command>"
+  }
 }
