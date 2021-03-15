@@ -20,13 +20,13 @@ A simple time tracker interacting with clockify from terminal.
 Using [`npm`](https://www.npmjs.com):
 
 ```
-npm install clocklify
+npm install -g clocklify
 ```
 
 Using [`yarn`](https://yarnpkg.com):
 
 ```
-yarn install clocklify
+yarn global add clocklify
 ```
 
 ## Getting started
