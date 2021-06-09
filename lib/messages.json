@@ -6,7 +6,7 @@
   "START_BREAK": "Break has started",
   "STOP_BREAK": "Break has stopped",
   "STOP_BREAK_FAILED": "Failed to stop break",
-  "BREAK_IN_PROGRESS": "Break in progress",
+  "BREAK_IN_PROGRESS": "On break",
   "NO_BREAK_IN_PROGRESS": "No break in progress",
   "GOAL_ON": "Monthly goal is now active",
   "GOAL_ALREADY_ON": "Monthly goal is already on",
