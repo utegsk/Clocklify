@@ -24,6 +24,7 @@
   "author": "Adam Harnusek",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^4.1.1",
     "configstore": "^5.0.1",
     "dotenv": "^8.2.0",
     "inquirer": "^7.2.0",
