@@ -14,8 +14,9 @@
   "GOAL_ALREADY_OFF": "Monthly goal is already off",
   "GOAL_STATUS_OFF": "Monthly goal is not active",
   "NEW_GOAL": "New monthly goal was set",
-  "WRONG_START_TIME_ENTRY": "Time entry is not valid, use one of the following formats: 'HH:MM','H:M'",
-  "WRONG_START_TIME_ENTRY_OVER": "We are not there yet :). Enter the time you arrived to work.",
+  "WRONG_TIME_ENTRY": "Time entry is not valid, use one of the following formats: 'HH:MM','H:M'",
+  "WRONG_TIME_ENTRY_OVER": "The entered time has to be in the past.",
+  "WRONG_TIME_ENTRY_END_BEFORE_START": "Sorry, you cannot get out of work earlier than you checked in!",
   "START_DATE_MISSING": "Missing start date",
   "DATE_RANGE_REQUIRED": "Two dates required in format: YYYY-MM-DD-HH-MM",
   "ENTER_API_KEY": "Please, enter your clockify api key.",
@@ -57,5 +58,5 @@
     "Nov",
     "Dec"
   ],
-  "INVALID_LOG_DATE": "is invalid Date format try YYY-MM-DD"
+  "INVALID_LOG_DATE": "is invalid Date format. Try YYYY-MM-DD"
 }
