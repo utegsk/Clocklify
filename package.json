@@ -17,10 +17,14 @@
     "url": "https://github.com/utegsk/Clocklify",
     "type": "git"
   },
+  "engines": {
+    "node": ">=12.0.0",
+    "npm": ">=6.0.0"
+  },
   "main": "index.js",
   "scripts": {
     "test": "jest tests/ --silent",
-    "start": "node index.js"
+    "start": "node --trace-warnings index.js"
   },
   "author": "Adam Harnusek",
   "license": "ISC",
