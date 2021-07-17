@@ -3,11 +3,10 @@
 
 name: Publish NodeJS package
 
-#run action on push event to master branch
+#run action on only on new release
 on:
-  push:
-    branches:
-      - master
+  release:
+    types: [created]
 
 jobs:
   publish-npm:
