@@ -19,7 +19,6 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/clocklify
-      - run: npm config set registry http://registry.npmjs.org/clocklify
       - run: npm ci
       - run: npm publish
         env:
