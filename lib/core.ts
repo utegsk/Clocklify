@@ -1,13 +1,13 @@
-const mainPackage = require('../package.json')
-const configStore = require('configstore')
-const helpPackage = require('./help.json')
-const messages = require('./messages.json')
-const utils = require('./utils')
-const work = require('./modules/work')
-const imp = require('./modules/import')
-const pause = require('./modules/break')
-const goal = require('./modules/goal')
-const log = require('./modules/log')
+import mainPackage from '../package.json'
+import configStore from 'configstore'
+import helpPackage = require('./help.json')
+import messages = require('./messages.json')
+import utils = require('./utils')
+import work = require('./modules/work')
+import imp = require('./modules/import')
+import pause = require('./modules/break')
+import goal = require('./modules/goal')
+import log = require('./modules/log')
 const credentials = new configStore(mainPackage.name)
 
 
@@ -83,7 +83,7 @@ const toggleBreak = () => {
 
 const workStatus = () => work.status()
 
-const monthGoal = (arg) => {
+const monthGoal = (arg: string) => {
   let _goal = credentials.get('goal')
   if (!_goal) {
     _goal = { active: false, workspaces: [] }
@@ -109,7 +109,7 @@ const logActualMonth = () => {
   log.logWork(start, now)
 }
 
-const logWork = (args) => {
+const logWork = (args: any) => {
   if (args.m && args.l) {
     const now = new Date()
     const start = new Date(now.getFullYear(), now.getMonth() - 1, 1, 0, 0, 0)
@@ -124,7 +124,7 @@ const logWork = (args) => {
   }
 }
 
-const importEntries = (filePath) => imp.importTimeEntries(filePath)
+const importEntries = (filePath: string) => imp.importTimeEntries(filePath)
 
 const help = () => {
   const list = ({ label, entries }) => {
@@ -157,7 +157,7 @@ const adviceHelp = () => {
 
 const printVersion = () => utils.fprint(`v${mainPackage.version}`, utils.messageType.SIMPLE)
 
-const unknownArgument = (argument) => {
+const unknownArgument = (argument: string) => {
   if (argument != null) {
     utils.fprint(`Argument '${argument}' not recognized.`, utils.messageType.ERROR)
     adviceHelp()
@@ -166,18 +166,18 @@ const unknownArgument = (argument) => {
   }
 }
 
-const invalidFlagUsage = (flag) => {
+const invalidFlagUsage = (flag: string) => {
   utils.fprint(`Invalid '-${flag}' flag usage.`, utils.messageType.ERROR)
   adviceHelp()
 }
 
-const incompatibleFlagUsage = (flags) => {
+const incompatibleFlagUsage = (flags: string[]) => {
   utils.fprint(`Incompatible '-${flags.join(', -')}' flag usage.`, utils.messageType.ERROR)
   adviceHelp()
 }
 
 
-module.exports = {
+export = {
   startWork,       // starts work
   stopWork,        // stops work
   toggleBreak,     // toggles break status

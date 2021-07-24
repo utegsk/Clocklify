@@ -6,13 +6,13 @@ const utils = require("../utils")
 const messages = require('../messages.json')
 
 
-const importTimeEntries = (filePath) => {
+const importTimeEntries = (filePath: string) => {
     if (path.extname(filePath) !== '.json') {
       utils.fprint(messages.WRONG_FILE_FORMAT, utils.messageType.ERROR)
       return
     }
     if (fs.existsSync(filePath)) {
-        fs.readFile(filePath,'utf8', (err,data) => {
+        fs.readFile(filePath,'utf8', (err: any,data: any) => {
             if(err){
                 throw new Error(`[FILE] ${err.message}`)
             }
@@ -23,7 +23,7 @@ const importTimeEntries = (filePath) => {
     }
 }
 
-const createDateEntriesFromFile = async(json) => {
+const createDateEntriesFromFile = async(json: any) => {
     try {
         await clockify.getClockifyApiToken() //look for api key or ask for it
         questions.askForProjectAndWorkspace().then(response => {

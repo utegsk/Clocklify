@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-require('dotenv').config()
-const core = require('./lib/core.js');
-const argv = require('minimist')(process.argv.slice(2));
-const args = argv._;
+import core from './lib/core'
+import argv from 'minimist';
+const args = argv._
+console.log(argv)
 
 
 const main = async () => {
