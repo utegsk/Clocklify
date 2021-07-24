@@ -1,6 +1,6 @@
 {
   "name": "clocklify",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "type": "commonjs",
   "description": "CLI for sending requests to clockify",
   "maintainers": [
