@@ -1,15 +1,17 @@
-const chalk = require('chalk');
+import chalk from 'chalk'
+import { Time } from 'lib/models/string'
 
-const convertStringToDate = (string) => { // expects date in format [YYYY-MM-DD-HH-MM]
+
+const convertStringToDate = (string: string): Date | undefined => { // expects date in format [YYYY-MM-DD-HH-MM]
   try {
     let stringArray = string.split('-')
-    return new Date(stringArray[0], Number(stringArray[1]) - 1, stringArray[2], stringArray[3], stringArray[4])
+    return new Date(+stringArray[0], Number(stringArray[1]) - 1, +stringArray[2], +stringArray[3], +stringArray[4])
   } catch (error) {
-    return null;
+    return undefined
   }
 }
 
-const parseDateFromTimeEntry = (time) => { // expects time entry in format [HH:MM:SS]
+const parseDateFromTimeEntry = (time: string): Date | undefined => { // expects time entry in format [HH:MM:SS]
   if (time) {
     const now = new Date();
     const regex = /\d{1,2}:\d{1,2}:?\d{0,2}/
@@ -21,15 +23,15 @@ const parseDateFromTimeEntry = (time) => { // expects time entry in format [HH:M
       return now
     }
   }
-  return null
+  return undefined
 }
 
-const parseProvidedTime = (timeString) => { // '14:00' -> { hour: 14, minute: 0 }
-  let [hour, minute] = timeString.split(':')
-  return { hour, minute }
+const parseProvidedTime = (timeString: string) : Time=> { // '14:00' -> { hour: 14, minute: 0 }
+  let [hours, minutes] = timeString.split(':')
+  return { hours, minutes }
 }
 
-const secondsToTimeIntervals = duration => {
+const secondsToTimeIntervals = (duration: number) => {
   const seconds = Math.floor((duration) % 60)
   const minutes = Math.floor((duration / 60) % 60)
   const hours = Math.floor((duration / (60 * 60)) % 24)
@@ -42,14 +44,15 @@ const secondsToTimeIntervals = duration => {
   }
 }
 
-const formatTimeString = (number) => {
+const formatTimeString = (number: number) => {
   return ('0' + number).slice(-2)
 }
 
-const isDateValid = (date) => {
-  return date instanceof Date && !isNaN(date)
+const isDateValid = (date: Date | number) => {
+  return date instanceof Date && !isNaN(date as any)
 }
-const isDateBefore = (former, later) => {
+
+const isDateBefore = (former: Date, later: Date) => {
   return isDateValid(former) && isDateValid(later) && former.getTime() < later.getTime()
 }
 
@@ -60,7 +63,7 @@ const messageType = {
   SIMPLE: '',
 }
 
-const fprint = (message, type = messageType.SIMPLE) => {
+const fprint = (message: string, type = messageType.SIMPLE) => {
   switch (type) {
     case messageType.INFO:
       return console.log(chalk.blue(type) + message)
@@ -73,7 +76,7 @@ const fprint = (message, type = messageType.SIMPLE) => {
   }
 }
 
-const createTable = ({ header = [], content = [], footer = [] }) => {
+const createTable = ({ header = [], content = [], footer = [] }: any) => {
   const colLengths = []
   let main = Math.max(header.length, content.length ? content[0].length : [], footer.length)
   for (let i = 0; i < main; i++) {

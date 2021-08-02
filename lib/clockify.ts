@@ -30,7 +30,7 @@ const getClockifyApiToken = async (promptNew = false) => {
   return token
 }
 
-const getAllProjects = (workspaceId) => {
+const getAllProjects = (workspaceId: string) => {
   return new Promise((resolve, reject) => {
     config.path = String.prototype.concat(`/api/v1/workspaces/${workspaceId}/projects`)
     config.method = 'GET'

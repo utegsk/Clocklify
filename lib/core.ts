@@ -11,14 +11,14 @@ import log from './modules/log'
 const credentials = new configStore(mainPackage.name)
 
 
-const startWork = (argv) => {
+const startWork = (argv: any): void => {
   let startDate
   if (argv.t) {
     startDate = utils.parseDateFromTimeEntry(argv.t)
-    if (!utils.isDateValid(startDate)) {
+    if (startDate && !utils.isDateValid(startDate)) {
       invalidFlagUsage('t')
       return
-    } else if (!utils.isDateBefore(startDate, new Date())) {
+    } else if (startDate && !utils.isDateBefore(startDate, new Date())) {
       utils.fprint(messages.WRONG_TIME_ENTRY_OVER, utils.messageType.ERROR)
       return
     }
@@ -28,7 +28,7 @@ const startWork = (argv) => {
   work.start(startDate)
 }
 
-const stopWork = (argv) => {
+const stopWork = (argv: any): void => {
   let endDate
   const _work = credentials.get('work')
   if (argv.t && argv.d) {
@@ -36,13 +36,13 @@ const stopWork = (argv) => {
     return
   } else if (argv.t) {
     endDate = utils.parseDateFromTimeEntry(argv.t)
-    if (!utils.isDateValid(endDate)) {
+    if (endDate && !utils.isDateValid(endDate)) {
       invalidFlagUsage('t')
       return
-    } else if (!utils.isDateBefore(endDate, new Date())) {
+    } else if (endDate && !utils.isDateBefore(endDate, new Date())) {
       utils.fprint(messages.WRONG_TIME_ENTRY_OVER, utils.messageType.ERROR)
       return
-    } else if (!utils.isDateBefore(new Date(_work.startDate), endDate)) {
+    } else if (endDate && !utils.isDateBefore(new Date(_work.startDate), endDate)) {
       console.log('time', _work.startDate, endDate)
       utils.fprint(messages.WRONG_TIME_ENTRY_END_BEFORE_START, utils.messageType.ERROR)
       return
@@ -83,7 +83,7 @@ const toggleBreak = () => {
 
 const workStatus = () => work.status()
 
-const monthGoal = (arg: string) => {
+const monthGoal = (arg: string): Promise<void> | undefined => {
   let _goal = credentials.get('goal')
   if (!_goal) {
     _goal = { active: false, workspaces: [] }
