@@ -10,6 +10,8 @@ import goal from './modules/goal'
 import log from './modules/log'
 const credentials = new configStore(mainPackage.name)
 
+import {Goal} from 'lib/models/goal'
+
 
 const startWork = (argv: any): void => {
   let startDate
@@ -25,7 +27,7 @@ const startWork = (argv: any): void => {
   } else {
     startDate = new Date()
   }
-  work.start(startDate)
+  work.start(startDate ? startDate : new Date())
 }
 
 const stopWork = (argv: any): void => {
@@ -84,7 +86,7 @@ const toggleBreak = () => {
 const workStatus = () => work.status()
 
 const monthGoal = (arg: string): Promise<void> | undefined => {
-  let _goal = credentials.get('goal')
+  let _goal: Goal = credentials.get('goal')
   if (!_goal) {
     _goal = { active: false, workspaces: [] }
     credentials.set('goal', _goal)

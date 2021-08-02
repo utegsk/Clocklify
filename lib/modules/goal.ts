@@ -1,13 +1,16 @@
-const mainPackage = require('../../package.json')
-const messages = require('../messages.json')
-const questions = require('../questions')
-const clockify = require('../clockify')
-const configStore = require('configstore')
+import mainPackage from '../../package.json'
+import messages from '../messages.json'
+import questions from '../questions'
+import clockify from '../clockify'
+import configStore from 'configstore'
+import utils from '../utils'
+
+import { Goal } from 'lib/models/goal'
+import { Workspace } from 'lib/models/clockify'
+
 const credentials = new configStore(mainPackage.name)
-const utils = require('../utils')
 
-
-const on = async (goal) => {
+const on = async (goal: Goal): Promise<void> => {
   if (goal.active) {
     utils.fprint(messages.GOAL_ALREADY_ON, utils.messageType.INFO)
   } else {
@@ -16,7 +19,7 @@ const on = async (goal) => {
   }
 }
 
-const off = async (goal) => {
+const off = async (goal: Goal): Promise<void> => {
   if (goal.active) {
     credentials.set('goal', { ...goal, active: false })
     utils.fprint(messages.GOAL_OFF, utils.messageType.INFO)
@@ -25,7 +28,7 @@ const off = async (goal) => {
   }
 }
 
-const status = async (goal) => {
+const status = async (goal: Goal): Promise<void> => {
   if (goal.active) {
     const content = []
     const now = new Date()
@@ -56,7 +59,7 @@ const status = async (goal) => {
   }
 }
 
-const getWorkspaceGoal = async (workspaceId = null) => {
+const getWorkspaceGoal = async (workspaceId: string): Promise<{active: boolean; goal: Goal | null}> => {
   let goal = credentials.get('goal')
   if (goal) {
     if (!workspaceId) {
@@ -75,12 +78,12 @@ const getWorkspaceGoal = async (workspaceId = null) => {
   return { active: false, goal: null }
 }
 
-const set = async (workspaceId = null) => {
+const set = async (workspaceId: string): Promise<Goal> => {
   const goal = credentials.get('goal')
   const workspaces = await clockify.getWorkSpacesAndProjects()
   let workspace = workspaceId ? workspaces.filter(ws => ws.id === workspaceId)[0] : await questions.askForWorkspace(workspaces)
 
-  const present = goal.workspaces.filter(ws => ws.id === workspace.id)
+  const present = goal.workspaces.filter((ws: Workspace) => ws.id === workspace.id)
   if (present.length === 1) {
     const pick = await questions.askForGoalHours(workspace)
     present[0].hours = pick.hours
@@ -101,7 +104,7 @@ const set = async (workspaceId = null) => {
   return present[0]
 }
 
-const isWorkspaceGoalReached = async (workspaceId) => {
+const isWorkspaceGoalReached = async (workspaceId: string): Promise<{isReached: boolean; workspaceGoal: Goal | null}> => {
   const { active, goal } = await getWorkspaceGoal(workspaceId)
   if (!active || !goal) {
     return { isReached: false, workspaceGoal: null }

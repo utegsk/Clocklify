@@ -1,21 +1,21 @@
-const utils = require('../utils.js')
-const chalk = require('chalk');
-const questions = require('../questions.js')
-const clockify = require('../clockify.js')
-const mainPackage = require('../../package.json')
-const messages = require('../messages.json')
+import utils from '../utils.js'
+import chalk from 'chalk'
+import questions from '../questions.js'
+import clockify from '../clockify.js'
+import mainPackage from '../../package.json'
+import messages from '../messages.json'
+import configStore from 'configstore'
+import goal from './goal'
 
-const configStore = require('configstore')
-const goal = require('./goal')
-const credentials = new configStore(mainPackage.name)
+const  credentials = new configStore(mainPackage.name)
 
 
-const workLengthString = (startDate, endDate = new Date().toString()) => {
+const workLengthString = (startDate: Date, endDate = (new Date()).toString()) => {
   if (!startDate) {
     utils.fprint(messages.START_DATE_MISSING, utils.messageType.ERROR)
     return
   }
-  const difference = (Date.parse(new Date(endDate)) - Date.parse(new Date(startDate))) - (credentials.get('break') ? credentials.get('break').total : 0)
+  const difference = (Date.parse((new Date(endDate)).toString()) - Date.parse((new Date(startDate)).toString())) - (credentials.get('break') ? credentials.get('break').total : 0)
   const { minutes, hours, days, seconds } = utils.secondsToTimeIntervals(difference / 1e3)
   const formatedSeconds = seconds > 0 && minutes < 1 ? `${utils.formatTimeString(seconds)} sec.` : ''
   const formatedMinutes = minutes > 0 ? `${utils.formatTimeString(minutes)} min.` : ''
@@ -24,7 +24,7 @@ const workLengthString = (startDate, endDate = new Date().toString()) => {
   return `${formatedDays} ${formatedHours} ${formatedMinutes} ${formatedSeconds}`.trim()
 }
 
-const start = (startDate) => {
+const start = (startDate: Date) => {
   let work = credentials.get('work')
   if (!work) {
     credentials.set('work', { startDate: startDate.toUTCString() })
@@ -90,12 +90,12 @@ const stop = async (_work, _break, endDate, promptNewApiToken = false) => {
   }
 }
 
-const log = async (from, to) => {
+const log = async (from: string, to: string) => {
   if (from && to) {
     await clockify.getClockifyApiToken()
     let startDate = utils.convertStringToDate(from)
     let endDate = utils.convertStringToDate(to)
-    if (startDate > endDate) {
+    if ((startDate && endDate) &&startDate > endDate) {
       let temp = startDate
       startDate = endDate
       endDate = temp
