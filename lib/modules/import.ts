@@ -54,6 +54,6 @@ const createDateEntriesFromFile = async(json: any) => {
     }
 }
 
-module.exports = {
+export default {
     importTimeEntries
 }

@@ -1,17 +1,15 @@
 #!/usr/bin/env node
 import core from './lib/core'
-import argv from 'minimist';
-const args = argv._
-console.log(argv)
+import minimist from 'minimist';
 
-
+const args = minimist(process.argv)
 const main = async () => {
   try {
     switch (args[0]) {
       case 'start':
       case 'go':
       case 'in':
-        core.startWork(argv)
+        core.startWork(args)
         break
       case 'stop':
       case 'out':
@@ -19,7 +17,7 @@ const main = async () => {
       case 'exit':
       case 'end':
       case 'done':
-        core.stopWork(argv)
+        core.stopWork(args)
         break
       case 'break':
       case 'pause':
@@ -36,7 +34,7 @@ const main = async () => {
         core.help()
         break
       case 'log':
-        core.logWork(argv)
+        core.logWork(args)
         break
       case 'import':
         core.importEntries(args[1])
@@ -45,9 +43,9 @@ const main = async () => {
         core.printVersion()
         break
       default:
-        if (argv.v || argv.version) {
+        if (args.v || args.version) {
           core.printVersion()
-        } else if (argv.h || argv.help) {
+        } else if (args.h || args.help) {
           core.help()
         } else {
           core.unknownArgument(args[0])

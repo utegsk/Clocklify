@@ -1,7 +1,8 @@
 const inquirer = require('inquirer')
 const messages = require('./messages.json')
+import {QuestionInput} from 'lib/models/questions'
 
-const promptQuestion = async ({ message, questionName, questionType, choices, validateFunction }) => {
+const promptQuestion = async ({ message, questionName, questionType, choices, validateFunction }: QuestionInput) => {
   const questions = [{
     name: questionName,
     type: questionType,
@@ -101,7 +102,7 @@ const chooseProject = (list) => {
 }
 
 
-module.exports = {
+export default {
   askForClockifyApiKey,
   askForGoalHours,
   askForProjectAndWorkspace,

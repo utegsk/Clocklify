@@ -20,7 +20,7 @@ const stop = (_break) => {
   // TODO: place for Slack and Github api call
 }
 
-module.exports = {
+export default {
   start,  // starts a break and changes working status on Slack/Github to "Lunch Time"
   stop,    // ends the running break and changes working status back to "Busy"
 }

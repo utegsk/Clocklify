@@ -209,7 +209,7 @@ const sendTimeEntries = (workspaceId, projectId, description, date) => {
   })
 }
 
-module.exports = {
+export default {
   getWorkSpacesAndProjects,
   getClockifyApiToken,
   getWorkingTimeFromRange,

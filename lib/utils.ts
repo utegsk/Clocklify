@@ -135,7 +135,7 @@ const fillWith = (text = '', length = 0, sign = ' ') => {
   return temp
 }
 
-module.exports = {
+export default {
   messageType,
   fprint,
   formatTimeString,

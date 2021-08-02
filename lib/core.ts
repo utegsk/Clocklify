@@ -1,13 +1,13 @@
 import mainPackage from '../package.json'
 import configStore from 'configstore'
-import helpPackage = require('./help.json')
-import messages = require('./messages.json')
-import utils = require('./utils')
-import work = require('./modules/work')
-import imp = require('./modules/import')
-import pause = require('./modules/break')
-import goal = require('./modules/goal')
-import log = require('./modules/log')
+import helpPackage from './help.json'
+import messages from './messages.json'
+import utils from './utils'
+import work from './modules/work'
+import imp from'./modules/import'
+import pause from './modules/break'
+import goal from './modules/goal'
+import log from './modules/log'
 const credentials = new configStore(mainPackage.name)
 
 
@@ -127,7 +127,7 @@ const logWork = (args: any) => {
 const importEntries = (filePath: string) => imp.importTimeEntries(filePath)
 
 const help = () => {
-  const list = ({ label, entries }) => {
+  const list = ({ label, entries }: {label: string, entries: object}) => {
     const offset = 1
     console.log('    ' + label + ' :')
     const longestCommandKeyLength = Math.max(...Object.keys(entries).map(key => key.length)) + offset
@@ -177,7 +177,7 @@ const incompatibleFlagUsage = (flags: string[]) => {
 }
 
 
-export = {
+export default {
   startWork,       // starts work
   stopWork,        // stops work
   toggleBreak,     // toggles break status

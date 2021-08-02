@@ -114,7 +114,7 @@ const isWorkspaceGoalReached = async (workspaceId) => {
   return { isReached: goal.hours <= (userFromResponse.duration / 3600), workspaceGoal: goal }
 }
 
-module.exports = {
+export default {
   on,                       //
   off,                      //
   status,                   //

@@ -129,7 +129,7 @@ const dump = () => {
   }
 }
 
-module.exports = {
+export default {
   start,
   stop,
   log,

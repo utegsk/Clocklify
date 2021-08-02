@@ -55,7 +55,7 @@ const logWork = async (startDate, endDate) => {
     })
 }
 
-module.exports = {
+export default {
     logWork,
     parseLogEntry
 }
